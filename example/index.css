@@ -1,0 +1,60 @@
+body {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  background-color: white;
+  color: black;
+  font-family: 'Lucida Grande', Helvetica, Arial;
+  margin: 0;
+  box-sizing: border-box;
+}
+button {
+  background: transparent;
+  border: none;
+}
+button:hover {
+  color: #333;
+}
+button:focus {
+  outline: none;
+}
+
+nav {
+  background-color: #a9ce7f;
+  width: 100%;
+  padding: 1em;
+}
+nav h3 {
+  width: auto;
+  float: left;
+  margin: 0;
+  padding-right: 1em;
+  line-height: 1em;
+}
+nav button {
+  text-decoration: underline;
+  padding: 0 1em;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+table, th, td {
+  border: 1px solid #999;
+}
+th {
+  text-align: left;
+}
+th, td {
+  padding: .5em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+thead tr {
+  background-color: #ddd;
+}
+tr:nth-child(even) {
+  background-color: #eee;
+}
