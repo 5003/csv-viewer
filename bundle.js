@@ -812,7 +812,7 @@ var nets = require('nets')
 var router = createRouter({
   '/:file': function (params, done) {
     nets({
-      url: 'example/' + (params.file || 'example.csv')
+      url: '/csv-viewer/example/' + (params.file || 'example.csv')
     }, function (err, res, csv) {
       csv = parseCSV(csv.toString())
       // TODO: Check for errors in csv
