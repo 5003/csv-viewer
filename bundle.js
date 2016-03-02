@@ -810,7 +810,7 @@ var nets = require('nets')
 
 // Create a route that loads our model
 var router = createRouter({
-  '/:file': function (params, done) {
+  '/csv-viewer/:file': function (params, done) {
     nets({
       url: '/csv-viewer/example/' + (params.file || 'example.csv')
     }, function (err, res, csv) {
@@ -857,7 +857,7 @@ var app = render(loading)
 document.body.appendChild(app)
 
 // Start by going to example.csv
-router.transitionTo('/')
+router.transitionTo('/csv-viewer')
 
 },{"../index.js":6,"babyparse":8,"base-router":9,"bel":1,"nets":43}],6:[function(require,module,exports){
 var $ = require('bel')
