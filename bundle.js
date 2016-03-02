@@ -819,7 +819,7 @@ var router = createRouter({
       done(err, csv)
     })
   }
-})
+}, { location: 'hash' })
 
 // Create a loading state
 var loading = $`<div className="loading"><i className="fa fa-spinner fa-spin"></i> Loading files....</div>`
