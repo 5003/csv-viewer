@@ -844,7 +844,7 @@ function render (contents) {
       <h3>CSV Viewer</h3>
       ${nav.map(function (item) {
         return $`<button onclick=${function () {
-          router.transitionTo('/' + item)
+          router.transitionTo('/csv-viewer/' + item)
         }}>${item}</button>`
       })}
     </nav>
