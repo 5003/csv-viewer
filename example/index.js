@@ -6,9 +6,9 @@ var nets = require('nets')
 
 // Create a route that loads our model
 var router = createRouter({
-  '/csv-viewer/:file': function (params, done) {
+  '//:file': function (params, done) {
     nets({
-      url: '/csv-viewer/example/' + (params.file || 'example.csv')
+      url: '/example/' + (params.file || 'example.csv')
     }, function (err, res, csv) {
       csv = parseCSV(csv.toString())
       // TODO: Check for errors in csv
@@ -40,7 +40,7 @@ function render (contents) {
       <h3>CSV Viewer</h3>
       ${nav.map(function (item) {
         return $`<button onclick=${function () {
-          router.transitionTo('/csv-viewer/' + item)
+          router.transitionTo('//' + item)
         }}>${item}</button>`
       })}
     </nav>
@@ -53,4 +53,4 @@ var app = render(loading)
 document.body.appendChild(app)
 
 // Start by going to example.csv
-router.transitionTo('/csv-viewer')
+router.transitionTo('/')
