@@ -1,4 +1,4 @@
-var $ = require('bel')
+var yo = require('yo-yo')
 var tbody = require('./lib/tbody.js')
 
 module.exports = function csvViewer (data, opts) {
@@ -12,22 +12,22 @@ module.exports = function csvViewer (data, opts) {
   return element
 
   function render (data) {
-    return $`<table>
+    return yo`<table>
       ${thead(headerRow)}
       ${tbody(data)}
     </table>`
   }
 
   function thead (row) {
-    return $`<thead>
+    return yo`<thead>
       <tr>
         ${row.map(function (col, idx) {
           var icon = ''
           if (idx === sortByIndex) {
             icon = (asc) ? 'fa-caret-down' : 'fa-caret-up'
-            icon = $`<i className="fa ${icon}"></i>`
+            icon = yo`<i className="fa ${icon}"></i>`
           }
-          return $`<th>
+          return yo`<th>
             <button onclick=${function () {
               sort(idx)
             }}>${col} ${icon}</button>
@@ -45,6 +45,6 @@ module.exports = function csvViewer (data, opts) {
       var y = b[sortByIndex] || ''
       return (asc) ? x.localeCompare(y) : y.localeCompare(x)
     })
-    element.update(render(data))
+    yo.update(element, render(data))
   }
 }

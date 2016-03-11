@@ -13,10 +13,10 @@
   "license": "MIT",
   "dependencies": {
     "babyparse": "^0.4.3",
-    "bel": "git+https://github.com/shama/bel.git",
     "global": "^4.3.0",
     "normalize.css": "^3.0.3",
-    "object-assign": "^4.0.1"
+    "object-assign": "^4.0.1",
+    "yo-yo": "^1.0.0"
   },
   "devDependencies": {
     "base-router": "^1.1.0",
