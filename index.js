@@ -1,4 +1,5 @@
 var yo = require('yo-yo')
+var csjs = require('csjs')
 var tbody = require('./lib/tbody.js')
 
 module.exports = function csvViewer (data, opts) {
@@ -12,7 +13,7 @@ module.exports = function csvViewer (data, opts) {
   return element
 
   function render (data) {
-    return yo`<table>
+    return yo`<table class="${className}">
       ${thead(headerRow)}
       ${tbody(data)}
     </table>`
@@ -48,3 +49,29 @@ module.exports = function csvViewer (data, opts) {
     yo.update(element, render(data))
   }
 }
+
+var styles = module.exports.styles = csjs`
+.csv-viewer {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+.csv-viewer, .csv-viewer th, .csv-viewer td {
+  border: 1px solid #27ae60;
+}
+.csv-viewer th {
+  text-align: left;
+}
+.csv-viewer th, .csv-viewer td {
+  padding: .5em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.csv-viewer thead tr {
+  background-color: #27ae60;
+}
+.csv-viewer tr:nth-child(even) {
+  background-color: #F5F5F5;
+}
+`
+var className = styles['csv-viewer']

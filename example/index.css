@@ -2,8 +2,8 @@ body {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  background-color: white;
-  color: black;
+  background-color: #ecf0f1;
+  color: #2c3e50;
   font-family: 'Lucida Grande', Helvetica, Arial;
   margin: 0;
   box-sizing: border-box;
@@ -11,18 +11,21 @@ body {
 button {
   background: transparent;
   border: none;
+  cursor: pointer;
 }
 button:hover {
-  color: #333;
+  color: #CFD8DC;
 }
 button:focus {
   outline: none;
 }
 
 nav {
-  background-color: #a9ce7f;
+  background-color: #2980b9;
   width: 100%;
   padding: 1em;
+  margin-bottom: 1em;
+  color: #ecf0f1;
 }
 nav h3 {
   width: auto;
@@ -34,27 +37,10 @@ nav h3 {
 nav button {
   text-decoration: underline;
   padding: 0 1em;
+  color: #ecf0f1;
 }
 
-table {
-  table-layout: fixed;
-  border-collapse: collapse;
-  width: 100%;
-}
-table, th, td {
-  border: 1px solid #999;
-}
-th {
-  text-align: left;
-}
-th, td {
-  padding: .5em;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-thead tr {
-  background-color: #ddd;
-}
-tr:nth-child(even) {
-  background-color: #eee;
+.contents {
+  width: 90%;
+  margin: 0 auto;
 }

@@ -44,7 +44,9 @@ function render (contents) {
         }}>${item}</button>`
       })}
     </nav>
-    ${contents}
+    <div class="contents">
+      ${contents}
+    </div>
   </div>`
 }
 
