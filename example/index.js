@@ -1,8 +1,9 @@
 var csvViewer = require('../index.js')
-var $ = require('bel')
+var yo = require('yo-yo')
 var createRouter = require('base-router')
 var parseCSV = require('babyparse').parse
 var nets = require('nets')
+var update = require('../lib/update.js')
 
 // Create a route that loads our model
 var router = createRouter({
@@ -18,33 +19,37 @@ var router = createRouter({
 }, { location: 'hash' })
 
 // Create a loading state
-var loading = $`<div className="loading"><i className="fa fa-spinner fa-spin"></i> Loading files....</div>`
+var loading = yo`<div className="loading"><i className="fa fa-spinner fa-spin"></i> Loading files....</div>`
 router.on('loading', function () {
-  app.update(render(loading))
+  update('.app', render(loading))
 })
 
 // On successful transitions, render the app
 router.on('transition', function (router, csv) {
-  app.update(render(csvViewer(csv.data)))
+  var rows = csv.data
+  update('.app', render(csvViewer(rows), rows.length))
 })
 
 // Main application
-function render (contents) {
+function render (contents, total) {
   var nav = [
     'example.csv',
     'big.csv',
     'transactions.csv'
   ]
-  return $`<div className="app">
+  return yo`<div class="app">
     <nav>
       <h3>CSV Viewer</h3>
       ${nav.map(function (item) {
-        return $`<button onclick=${function () {
+        return yo`<button onclick=${function () {
           router.transitionTo('/' + item)
         }}>${item}</button>`
       })}
     </nav>
-    ${contents}
+    <div class="contents">
+      ${contents}
+      <h3>Total Rows: ${total || '?'}
+    </div>
   </div>`
 }
 
