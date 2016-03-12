@@ -3,6 +3,7 @@ var yo = require('yo-yo')
 var createRouter = require('base-router')
 var parseCSV = require('babyparse').parse
 var nets = require('nets')
+var update = require('../lib/update.js')
 
 // Create a route that loads our model
 var router = createRouter({
@@ -20,22 +21,23 @@ var router = createRouter({
 // Create a loading state
 var loading = yo`<div className="loading"><i className="fa fa-spinner fa-spin"></i> Loading files....</div>`
 router.on('loading', function () {
-  yo.update(app, render(loading))
+  update('.app', render(loading))
 })
 
 // On successful transitions, render the app
 router.on('transition', function (router, csv) {
-  yo.update(app, render(csvViewer(csv.data)))
+  var rows = csv.data
+  update('.app', render(csvViewer(rows), rows.length))
 })
 
 // Main application
-function render (contents) {
+function render (contents, total) {
   var nav = [
     'example.csv',
     'big.csv',
     'transactions.csv'
   ]
-  return yo`<div className="app">
+  return yo`<div class="app">
     <nav>
       <h3>CSV Viewer</h3>
       ${nav.map(function (item) {
@@ -46,6 +48,7 @@ function render (contents) {
     </nav>
     <div class="contents">
       ${contents}
+      <h3>Total Rows: ${total || '?'}
     </div>
   </div>`
 }
