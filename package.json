@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "wzrd example/index.js:bundle.js",
+    "start": "wzrd example/index.js:bundle.js -- -t csjs-injectify",
     "test": "standard && browserify test.js | testron",
     "build": "browserify example/index.js -o bundle.js",
     "deploy": "gh-pages-deploy"
@@ -33,12 +33,11 @@
     "standard": "^6.0.7",
     "tape": "^4.4.0",
     "testron": "^1.2.0",
-    "wzrd": "^1.3.1"
+    "wzrd": "^1.3.1",
+    "yo-yoify": "^1.0.2"
   },
   "browserify": {
-    "transform": [
-      "csjs-injectify"
-    ]
+    "transform": ["yo-yoify"]
   },
   "gh-pages-deploy": {
     "prep": [
